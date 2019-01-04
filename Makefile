@@ -36,7 +36,7 @@ PROTOS_PATH = ../../protos
 
 vpath %.proto $(PROTOS_PATH)
 
-all: system-check greeter_client greeter_server greeter_async_client greeter_async_client2 greeter_async_server async_streaming_server greeter_streaming_client
+all: system-check greeter_client greeter_server greeter_async_client greeter_async_client2 greeter_async_server async_streaming_server async_streaming_server_alarm greeter_streaming_client
 
 greeter_client: helloworld.pb.o helloworld.grpc.pb.o greeter_client.o
 	$(CXX) $^ $(LDFLAGS) -o $@
@@ -54,6 +54,9 @@ greeter_async_server: helloworld.pb.o helloworld.grpc.pb.o greeter_async_server.
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 async_streaming_server: hellostreamingworld.pb.o hellostreamingworld.grpc.pb.o async_streaming_server.o
+	$(CXX) $^ $(LDFLAGS) -o $@
+
+async_streaming_server_alarm: hellostreamingworld.pb.o hellostreamingworld.grpc.pb.o async_streaming_server_alarm.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 greeter_streaming_client: hellostreamingworld.pb.o hellostreamingworld.grpc.pb.o greeter_streaming_client.o

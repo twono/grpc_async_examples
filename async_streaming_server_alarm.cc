@@ -89,7 +89,14 @@ private:
             }
             else if (status_ == PROCESS)
             {
-                new CallData(service_, cq_);
+                // Now that we go through this stage multiple times, 
+                // we don't want to create a new instance every time.
+                // Refer to gRPC's original example if you don't understand 
+                // why we create a new instance of CallData here.
+                if (times_ == 0)
+                {
+                    new CallData(service_, cq_);
+                }
 
                 if (times_++ >= 6)
                 {

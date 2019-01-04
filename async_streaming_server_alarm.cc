@@ -122,6 +122,7 @@ private:
     private:
         bool HasData() 
         {
+            // A dummy condition to make it sometimes have data and sometimes not
             return times_ % 2 == 0;
         }
 

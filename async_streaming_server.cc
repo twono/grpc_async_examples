@@ -91,15 +91,15 @@ private:
 
                 if (times_++ >= 3)
                 {
-                	status_ = FINISH;
-                	responder_.Finish(Status::OK, this);
+                    status_ = FINISH;
+                    responder_.Finish(Status::OK, this);
             	}
             	else
             	{
-            		std::string prefix("Hello ");
-                	reply_.set_message(prefix + request_.name() + ", no " + request_.num_greetings());
+                    std::string prefix("Hello ");
+                    reply_.set_message(prefix + request_.name() + ", no " + request_.num_greetings());
 
-            		responder_.Write(reply_, this);
+                    responder_.Write(reply_, this);
             	}
             }
             else
